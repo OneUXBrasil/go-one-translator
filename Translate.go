@@ -1,10 +1,12 @@
 package one_translator
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 )
 
@@ -27,5 +29,24 @@ func Translate(content string, from string, to string) (string, error) {
 	sIndex := strings.Index(tt[4:], "\"")
 	r := string(tt[4 : sIndex+4])
 
-	return r, err
+	return r, nil
+}
+
+func TranslateFile(filePath string, from string, to string) ([]string, error) {
+	var results []string
+	file, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		text := scanner.Text()
+		result, err := Translate(text, from, to)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	return results, nil
 }

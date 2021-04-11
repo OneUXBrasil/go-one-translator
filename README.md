@@ -1,1 +1,1 @@
-# go-one-translator
+# one translator para Golang!

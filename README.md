@@ -1,4 +1,4 @@
-# ![one_translator](https://github.com/OneUXBrasil/go-one-translator) para Golang!
+# ![one_translator](https://github.com/OneUXBrasil/one-translator) para Golang!
 # Usando
 ## Instalando o modulo e importando
 instalar o modulo: `go get github.com/OneUXBrasil/go-one-translator`
